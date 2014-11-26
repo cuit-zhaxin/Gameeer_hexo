@@ -3,11 +3,13 @@ menu:
   Home: /
   Archives: /archives
   About: /about
+  Links: /links
 # Header Icon
 menu_icon:
   Home: nav-home-icon
   Archives: nav-archives-icon
   About: nav-about-icon
+  Links: nav-links-icon
 
 rss: /atom.xml
 
@@ -17,14 +19,8 @@ archive_yearly: false #按年存档
 
 widgets: #配置页脚显示哪些小挂件
   - category
-#  - tag
   - tagcloud
   - recent_posts
-  - blogroll
-  - weibo 
-# blogrolls:
-#  - 泰然网: http://tairan.com
-#  - cocos官网: http://cocos.com
 
 fancybox: true
 
