@@ -390,6 +390,9 @@ body {
 #nav-about-icon:before {
   content: "\f007";
 }
+#nav-links-icon:before {
+  content: "\f0c1";
+}
 .article {
   margin: 60px 0 20px 0;
 }
