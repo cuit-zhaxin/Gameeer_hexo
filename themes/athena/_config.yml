@@ -20,10 +20,11 @@ widgets: #配置页脚显示哪些小挂件
 #  - tag
   - tagcloud
   - recent_posts
-#  - blogroll 友情链接
-blogrolls:
-  - 泰然网: http://tairan.com
-  - cocos官网: http://cocos.com
+  - blogroll
+  - weibo 
+# blogrolls:
+#  - 泰然网: http://tairan.com
+#  - cocos官网: http://cocos.com
 
 fancybox: true
 
