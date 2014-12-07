@@ -4,3 +4,4 @@ db.json
 debug.log
 public/
 .deploy/
+source/_posts/*~
