@@ -84,6 +84,7 @@ disqus_shortname:
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 plugins:
 - hexo-generator-feed
+- hexo-generator-sitemap
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
 theme: athena
 exclude_generator:
