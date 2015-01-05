@@ -69,4 +69,4 @@ OpenCL 规范由四个模型组成：
 
 kernel和OpenCL执行模型：
 kernel是OpenCL程序在设备实际运行的那部分代码。
-
+NDRange、work-item、workgroup等的概念解析参照[OpenCL:一种异构计算架构](http://www.cnblogs.com/wangshide/archive/2012/01/07/2315830.html#sec-3.3.1)
