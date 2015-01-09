@@ -88,7 +88,6 @@ btw:上图是从网上借的，路径里显示的是v5.5代表的是5.5版本，
 
 ![](/images/source-cpp.png)
 
-> 以上代码实现向量相加，来源于[Let it be!](http://www.cnblogs.com/wangshide/archive/2011/11/04/2235204.html)。原文中代码有错，笔者已修改。
 
 - 添加头文件
 
@@ -232,6 +231,7 @@ int main( int argc, char* argv[] )
 }
 ```
 
+> 以上代码实现向量相加，来源于[Let it be!](http://www.cnblogs.com/wangshide/archive/2011/11/04/2235204.html)。原文中代码有错，笔者已修改。
 
 
 
