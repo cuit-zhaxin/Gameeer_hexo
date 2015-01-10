@@ -1,11 +1,11 @@
-title: OpenCL³õÌ½:ÏòÁ¿Ïà¼Ó£¨CÓïÑÔ°æ£©
+title: OpenCLåˆæ¢:å‘é‡ç›¸åŠ ï¼ˆCè¯­è¨€ç‰ˆï¼‰
 date: 2015-01-10 16:42:39
-categories: ¼¼Êõ
+categories: æŠ€æœ¯
 tags: OpenCL
 ---
 <p/>
 
-ÏÂÎÄ¼ÇÂ¼ÁË**ÏòÁ¿Ïà¼Ó**ÊµÀı´úÂë,ÁíÍâÍÆ¼öÒ»Ğ©²Î¿¼×ÊÁÏ:
+ä¸‹æ–‡è®°å½•äº†**å‘é‡ç›¸åŠ **å®ä¾‹ä»£ç ,å¦å¤–æ¨èä¸€äº›å‚è€ƒèµ„æ–™:
 - OpenCL Reference Pages:[https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/](https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/)
 - OpenCL API 1.2 Reference Card:[https://www.khronos.org/files/opencl-1-2-quick-reference-card.pdf](https://www.khronos.org/files/opencl-1-2-quick-reference-card.pdf)
 - OpenCL 2.0 Reference:[https://www.khronos.org/files/opencl20-quick-reference-card.pdf](https://www.khronos.org/files/opencl20-quick-reference-card.pdf)
@@ -17,37 +17,37 @@ tags: OpenCL
 #include <CL/cl.h>
 
 const char* programSource =
-	"__kernel	\n"
-	"void vecadd(__global int *A,	\n"
+	"__kernel					\n"
+	"void vecadd(__global int *A,			\n"
 	"			 __global int *B,	\n"
 	"			 __global int *C)	\n"
-	"{	\n"
-	"	\n"
-	"	int idx = get_global_id(0);	\n"
-	"	\n"
-	"	C[idx] = A[idx] + B[idx];	\n"
-	"}								\n"
+	"{			 	      		\n"
+	"						\n"
+	"	int idx = get_global_id(0);		\n"
+	"						\n"
+	"	C[idx] = A[idx] + B[idx];		\n"
+	"}						\n"
 	;
 
 
 int main(){
 
-	//Ö÷»úÊı¾İ
+	//ä¸»æœºæ•°æ®
 	int *A = NULL;
 	int *B = NULL;
 	int *C = NULL;
 
-	//Êı×éÀïµÄÔªËØ¸öÊı
+	//æ•°ç»„é‡Œçš„å…ƒç´ ä¸ªæ•°
 	const int elements = 2048;
-	//¼ÆËãÊı¾İ¿í¶È
+	//è®¡ç®—æ•°æ®å®½åº¦
 	size_t datasize = sizeof(int)*elements;
 
-	//ÎªÊäÈëÊä³öÊı¾İ·ÖÅä¿Õ¼ä
+	//ä¸ºè¾“å…¥è¾“å‡ºæ•°æ®åˆ†é…ç©ºé—´
 	A = (int *)malloc(datasize);
 	B = (int *)malloc(datasize);
 	C = (int *)malloc(datasize);
 
-	//³õÊ¼»¯ÊäÈëÊı¾İ
+	//åˆå§‹åŒ–è¾“å…¥æ•°æ®
 	int i;
 	for (i = 0;i<elements;i++)
 	{
@@ -56,33 +56,33 @@ int main(){
 	}
 
 	cl_int status;
-	//Æ½Ì¨Êı
+	//å¹³å°æ•°
 	cl_uint numPlatforms = 0;
 	status = clGetPlatformIDs(0,NULL,&numPlatforms);
-	//ÎªÃ¿Ò»¸öÆ½Ì¨·ÖÅä×ã¹»¿Õ¼ä
+	//ä¸ºæ¯ä¸€ä¸ªå¹³å°åˆ†é…è¶³å¤Ÿç©ºé—´
 	cl_platform_id* platforms = NULL;
 	platforms = (cl_platform_id*)malloc(numPlatforms*sizeof(cl_platform_id));
-	//»ñÈ¡Æ½Ì¨ID
+	//è·å–å¹³å°ID
 	status = clGetPlatformIDs(numPlatforms,platforms,NULL);
 
-	//¼ìË÷Éè±¸Êı
+	//æ£€ç´¢è®¾å¤‡æ•°
 	cl_uint numDevices = 0;
 	status = clGetDeviceIDs(platforms[0],CL_DEVICE_TYPE_ALL,0,NULL,&numDevices);
-	//ÎªÃ¿Ò»¸öÉè±¸·ÖÅä×ã¹»¿Õ¼ä
+	//ä¸ºæ¯ä¸€ä¸ªè®¾å¤‡åˆ†é…è¶³å¤Ÿç©ºé—´
 	cl_device_id* devices;
 	devices = (cl_device_id*)malloc(numDevices*sizeof(cl_device_id));
-	//»ñÈ¡Éè±¸ID
+	//è·å–è®¾å¤‡ID
 	status = clGetDeviceIDs(platforms[0],CL_DEVICE_TYPE_ALL,numDevices,devices,NULL);
 
-	//ĞÂ½¨ÉÏÏÂÎÄ
+	//æ–°å»ºä¸Šä¸‹æ–‡
 	cl_context context;
 	context = clCreateContext(NULL,numDevices,devices,NULL,NULL,&status);
 
-	//´´½¨ÃüÁî¶ÓÁĞ
+	//åˆ›å»ºå‘½ä»¤é˜Ÿåˆ—
 	cl_command_queue cmdQueue;
 	cmdQueue = clCreateCommandQueue(context,devices[0],0,&status);
 
-	//´´½¨Éè±¸»º´æ
+	//åˆ›å»ºè®¾å¤‡ç¼“å­˜
 	cl_mem bufA;
 	bufA = clCreateBuffer(context,CL_MEM_READ_ONLY,datasize,NULL,&status);
 	cl_mem bufB;
@@ -90,18 +90,18 @@ int main(){
 	cl_mem bufC;
 	bufC = clCreateBuffer(context,CL_MEM_READ_ONLY,datasize,NULL,&status);
 
-	//½«Êı×éÖĞÊı¾İĞ´ÈëÉè±¸»º´æ
+	//å°†æ•°ç»„ä¸­æ•°æ®å†™å…¥è®¾å¤‡ç¼“å­˜
 	status = clEnqueueWriteBuffer(cmdQueue,bufA,CL_FALSE,0,datasize,A,0,NULL,NULL);
 	status = clEnqueueWriteBuffer(cmdQueue,bufB,CL_FALSE,0,datasize,B,0,NULL,NULL);
 
-	//´´½¨³ÌĞò
+	//åˆ›å»ºç¨‹åº
 	cl_program program = clCreateProgramWithSource(context,1,(const char**)&programSource,NULL,&status);
-	//ÎªÉè±¸±àÒë³ÌĞò
+	//ä¸ºè®¾å¤‡ç¼–è¯‘ç¨‹åº
 	status = clBuildProgram(program,numDevices,devices,NULL,NULL,NULL);
 
 	cl_kernel kernel = clCreateKernel(program,"vecadd",&status);
 
-	//ÉèÖÃÄÚºË²ÎÊı
+	//è®¾ç½®å†…æ ¸å‚æ•°
 	status = clSetKernelArg(kernel,0,sizeof(cl_mem),&bufA);
 	status = clSetKernelArg(kernel,1,sizeof(cl_mem),&bufB);
 	status = clSetKernelArg(kernel,2,sizeof(cl_mem),&bufC);
@@ -109,10 +109,10 @@ int main(){
 	size_t globalWorkSize[1];
 	globalWorkSize[0] = elements;
 	
-	//Ö´ĞĞÄÚºË
+	//æ‰§è¡Œå†…æ ¸
 	status = clEnqueueNDRangeKernel(cmdQueue,kernel,1,NULL,globalWorkSize,NULL,0,NULL,NULL);
 
-	//´ÓÉè±¸»º´æ¶ÁÈ¡Êı¾İ
+	//ä»è®¾å¤‡ç¼“å­˜è¯»å–æ•°æ®
 	clEnqueueReadBuffer(cmdQueue,bufC,CL_TRUE,0,datasize,C,0,NULL,NULL);
 
 	int result = 1;
@@ -131,7 +131,7 @@ int main(){
 		printf("Output is incorrect\n");
 	}
 
-	//ÊÍ·ÅOpenCL×ÊÔ´
+	//é‡Šæ”¾OpenCLèµ„æº
 	clReleaseKernel(kernel);
 	clReleaseProgram(program);
 	clReleaseCommandQueue(cmdQueue);
@@ -140,7 +140,7 @@ int main(){
 	clReleaseMemObject(bufC);
 	clReleaseContext(context);
 
-	//ÊÍ·ÅÖ÷»ú×ÊÔ´
+	//é‡Šæ”¾ä¸»æœºèµ„æº
 	free(A);
 	free(B);
 	free(C);
