@@ -5,7 +5,11 @@ tags: OpenCL
 ---
 <p/>
 
-下文记录了C语言版的向量相加代码
+下文记录了**向量相加**实例代码,另外推荐一些参考资料:
+- OpenCL Reference Pages:[https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/](https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/)
+- OpenCL API 1.2 Reference Card:[https://www.khronos.org/files/opencl-1-2-quick-reference-card.pdf](https://www.khronos.org/files/opencl-1-2-quick-reference-card.pdf)
+- OpenCL 2.0 Reference:[https://www.khronos.org/files/opencl20-quick-reference-card.pdf](https://www.khronos.org/files/opencl20-quick-reference-card.pdf)
+
 <!-- more -->
 ```
 #include <stdio.h>
