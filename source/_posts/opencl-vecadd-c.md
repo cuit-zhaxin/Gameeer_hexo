@@ -19,8 +19,8 @@ tags: OpenCL
 const char* programSource =
 	"__kernel					\n"
 	"void vecadd(__global int *A,			\n"
-	"			 __global int *B,	\n"
-	"			 __global int *C)	\n"
+	"	     __global int *B,			\n"
+	"	     __global int *C)			\n"
 	"{			 	      		\n"
 	"						\n"
 	"	int idx = get_global_id(0);		\n"
