@@ -1,6 +1,6 @@
-title: OpenCL初探:向量相加（C语言版）
+title: OpenCL初探:向量相加(C)
 date: 2015-01-10 16:42:39
-categories: 技术
+categories: 开发
 tags: OpenCL
 ---
 <p/>
