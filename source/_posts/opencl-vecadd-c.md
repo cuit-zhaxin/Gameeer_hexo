@@ -6,7 +6,7 @@ tags: OpenCL
 <p/>
 
 下文记录了**向量相加**实例代码,运行结果如下图：
-![](/images/vector_add_result.png)
+![](/images/vecadd_c_result.png)
 
 此外推荐一些参考资料:
 - OpenCL Reference Pages:[https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/](https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/)
