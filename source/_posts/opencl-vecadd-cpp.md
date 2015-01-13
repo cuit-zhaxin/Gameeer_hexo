@@ -5,14 +5,32 @@ tags: OpenCL
 ---
 <p/>
 
-遇到问题了，当设备类型为**CL_DEVICE_TYPE_GPU**时捕获错误如下：
+编码期间遇到问题了，
+当设备类型为**CL_DEVICE_TYPE_GPU**时捕获错误如下:
 ![](/images/vecadd_cpp_err1.png)
+将设备类型改为**CL_DEVICE_TYPE_CPU**或者**CL_DEVICE_TYPE_ALL** 不报错,此说明获取GPU设备ID失败。
 
-将设备类型改为**CL_DEVICE_TYPE_CPU**或者**CL_DEVICE_TYPE_ALL**,不再报错。
+**解决办法**:笔者安装了Intel OpenCL SDK后打开笔记本的独立显卡，搞定。
+
+正确运行结果如下：
+![](/images/vecadd_cpp_result.png)
 
 下文是**使用C++封装API实现向量相加**的源码:
 首先需得下载 cl.hpp 文件，下载地址:[https://www.khronos.org/registry/cl/](https://www.khronos.org/registry/cl/)
 <!--more-->
+
+项目根目录下创建文件**vector_add_kernel.cl**，存放如下代码:
+```
+__kernel void vecadd(__global int *A,
+					 __global int *B,
+					 __global int *C)
+{
+	int idx = get_global_id(0);
+	C[idx] = A[idx] + B[idx];
+}								
+```
+
+主机代码**VectorsAdd.cpp**如下:
 ```
 #define __CL_ENABLE_EXCEPTIONS
 
@@ -47,9 +65,9 @@ int main(){
 		cl::Buffer bufferA = cl::Buffer(context,CL_MEM_READ_ONLY,N_ELEMENTS*sizeof(int));
 		cl::Buffer bufferB = cl::Buffer(context,CL_MEM_READ_ONLY,N_ELEMENTS*sizeof(int));
 		cl::Buffer bufferC = cl::Buffer(context,CL_MEM_WRITE_ONLY,N_ELEMENTS*sizeof(int));
-
-		queue.enqueueWriteBuffer(bufferA,CL_TRUE,0,sizeof(int),A);
-		queue.enqueueWriteBuffer(bufferB,CL_TRUE,0,sizeof(int),B);
+		
+		queue.enqueueWriteBuffer(bufferA, CL_TRUE, 0, N_ELEMENTS*sizeof(int), A);
+		queue.enqueueWriteBuffer(bufferB, CL_TRUE, 0, N_ELEMENTS*sizeof(int), B);
 
 		std::ifstream sourceFile("vector_add_kernel.cl");
 		std::string sourceCode(std::istreambuf_iterator<char>(sourceFile),(std::istreambuf_iterator<char>()));
@@ -70,7 +88,7 @@ int main(){
 		bool result = true;
 		for (int i=0;i<N_ELEMENTS;i++)
 		{
-			C[i] = B[i] + C[i];
+			std::cout << C[i] << "=" << A[i] << "+" << B[i] << " ";
 			if (C[i]!=i+i)
 			{
 				result = false;
