@@ -2,7 +2,6 @@ title: 读《学习 GNU Emacs》
 date: 2014-12-06 21:52:02
 categories: 读书
 tags: [emacs,神之编辑器]
-
 ---
 <p/>
 ```

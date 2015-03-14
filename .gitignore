@@ -4,4 +4,9 @@ db.json
 debug.log
 public/
 .deploy/
+.deploy_git/
 source/_posts/*~
+node_modules/
+package.json
+scaffolds/
+*~

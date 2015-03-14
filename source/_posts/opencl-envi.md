@@ -2,7 +2,6 @@ title: OpenCL初探:环境搭建
 date: 2015-01-09 10:55:11
 categories: 开发
 tags: OpenCL
-
 ---
 <p/>
 ## 前言
